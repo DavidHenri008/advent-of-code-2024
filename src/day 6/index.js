@@ -100,9 +100,8 @@ const part2 = () => {
 
   for (let posI = 0; posI < map.length; posI++) {
     for (let posJ = 0; posJ < map[0].length; posJ++) {
-      // Skip if position is an obstacle or guard.
       const newMap = [...map];
-      // Replace position by obstacle '#'.
+      // Replace position by obstacle '#', except if it is the guard.
       if (newMap[posI][posJ] !== '^') {
         newMap[posI] = newMap[posI].substring(0, posJ) + '#' + newMap[posI].substring(posJ + 1);
       }
