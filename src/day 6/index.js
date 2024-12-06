@@ -108,6 +108,7 @@ const part2 = () => {
         if (i < 0 || i >= maxI || j < 0 || j >= maxJ) {
           continueLoop = false;
         } else if (newMap[i][j] === '#') {
+          // Calculate the guard position before the obstacle.
           i -= offsetI;
           j -= offsetJ;
           // Calculate new guard direction.
@@ -124,6 +125,7 @@ const part2 = () => {
             offsetI = -1;
             offsetJ = 0;
           }
+          // Calculate new guard position once the direction is changed.
           i += offsetI;
           j += offsetJ;
         }
