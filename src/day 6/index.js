@@ -116,10 +116,13 @@ const part2 = () => {
       let offsetI = -1;
       let offsetJ = 0;
       while (continueLoop && sameSteps <= maxI * maxJ) {
+        // Detect if it is a new position.
         if (newMap[i][j] !== 'X') {
           newMap[i] = newMap[i].substring(0, j) + 'X' + newMap[i].substring(j + 1);
+          // Reset same position steps counter.
           sameSteps = 0;
         } else {
+          // Count how many time the guard steps in the same position.
           sameSteps++;
         }
         // Calculate new guard position.
@@ -149,7 +152,7 @@ const part2 = () => {
           j += offsetJ;
         }
       }
-      
+
       // Detect if it is a valid path. Having true means that we were in a loop.
       if (continueLoop) {
         result++;
