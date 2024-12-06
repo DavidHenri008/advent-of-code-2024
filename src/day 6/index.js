@@ -79,10 +79,12 @@ const part2 = () => {
     for (let posJ = 0; posJ < map[0].length; posJ++) {
       // Clone map.
       const newMap = [...map];
-      // Replace position by obstacle '#', except if it is the guard.
-      if (newMap[posI][posJ] !== '^') {
-        newMap[posI] = newMap[posI].substring(0, posJ) + '#' + newMap[posI].substring(posJ + 1);
+      // Skip if it is an obstacle '#' or a guard '^'.
+      if (newMap[posI][posJ] === '#' || newMap[posI][posJ] === '^') {
+        continue;
       }
+      // Replace position by obstacle '#'.
+      newMap[posI] = newMap[posI].substring(0, posJ) + '#' + newMap[posI].substring(posJ + 1);
 
       // Begin the guard movement.
       let sameSteps = 0;
@@ -102,15 +104,14 @@ const part2 = () => {
           sameSteps++;
         }
         // Calculate new guard position.
+        const currentI = i;
+        const currentJ = j;
         i += offsetI;
         j += offsetJ;
         // Detect if it is out of the map.
         if (i < 0 || i >= maxI || j < 0 || j >= maxJ) {
           continueLoop = false;
         } else if (newMap[i][j] === '#') {
-          // Calculate the guard position before the obstacle.
-          i -= offsetI;
-          j -= offsetJ;
           // Calculate new guard direction.
           if (offsetI === -1 && offsetJ === 0) {
             offsetI = 0;
@@ -126,8 +127,8 @@ const part2 = () => {
             offsetJ = 0;
           }
           // Calculate new guard position once the direction is changed.
-          i += offsetI;
-          j += offsetJ;
+          i = currentI + offsetI;
+          j = currentJ + offsetJ;
         }
       }
 
