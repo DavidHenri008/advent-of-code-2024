@@ -121,7 +121,7 @@ const part2 = () => {
         // Calculate new guard position.
         i += offsetI;
         j += offsetJ;
-        // Calculate new guard mode.
+        // Detect if it is out of the map.
         if (i < 0 || i >= maxI || j < 0 || j >= maxJ) {
           continueLoop = false;
         } else if (newMap[i][j] === '#') {
