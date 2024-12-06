@@ -145,6 +145,7 @@ const part2 = () => {
           j += offsetJ;
         }
       }
+      // Detect if it is a valid path. Having true means that we were in a loop.
       if (continueLoop) {
         result++;
         //console.log(continueLoop, sameSteps, result);
