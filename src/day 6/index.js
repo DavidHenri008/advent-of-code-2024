@@ -15,30 +15,6 @@ const findGuard = (map) => {
     }
   }
 };
-// const moveGuard = (map, initI, initJ, offsetI, offsetJ, count) => {
-//   map[initI][initJ] = 'X';
-//   const newI = initI + offsetI;
-//   const newJ = initJ + offsetJ;
-//   if (newI < 0 || newI >= map.length || newJ < 0 || newJ >= map[0].length) {
-//     return;
-//   }
-//   if (map[newI][newJ] === '#') {
-//     if (offsetI === -1 && offsetJ === 0) {
-//       moveGuard(map, initI, initJ, 0, 1);
-//     }
-//     if (offsetI === 0 && offsetJ === 1) {
-//       moveGuard(map, initI, initJ, 1, 0);
-//     }
-//     if (offsetI === 1 && offsetJ === 0) {
-//       moveGuard(map, initI, initJ, 0, -1);
-//     }
-//     if (offsetI === 0 && offsetJ === -1) {
-//       moveGuard(map, initI, initJ, -1, 0);
-//     }
-//   } else {
-//     moveGuard(map, newI, newJ, offsetI, offsetJ);
-//   }
-// };
 
 /**** Part ONE ****/
 const part1 = () => {
