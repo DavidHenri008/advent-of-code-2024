@@ -98,13 +98,17 @@ const part2 = () => {
   const maxJ = map[0].length;
   const [initI, initJ] = findGuard(map);
 
+  // Loop through all map positions.
   for (let posI = 0; posI < map.length; posI++) {
     for (let posJ = 0; posJ < map[0].length; posJ++) {
+      // Clone map.
       const newMap = [...map];
       // Replace position by obstacle '#', except if it is the guard.
       if (newMap[posI][posJ] !== '^') {
         newMap[posI] = newMap[posI].substring(0, posJ) + '#' + newMap[posI].substring(posJ + 1);
       }
+
+      // Begin the guard movement.
       let sameSteps = 0;
       let continueLoop = true;
       let i = initI;
@@ -145,6 +149,7 @@ const part2 = () => {
           j += offsetJ;
         }
       }
+      
       // Detect if it is a valid path. Having true means that we were in a loop.
       if (continueLoop) {
         result++;
